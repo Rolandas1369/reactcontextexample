@@ -16,7 +16,10 @@ export default class SetSkill extends Component {
                 {(value) => {
                     console.log(value.items, 'consumer')
                     return (
-                        <div onClick={() => value.printOne()}>Okokok</div>
+                        <div>
+                            <div onClick={(e) => value.printOne(e)}>Okokok</div>
+                            <div>Lower div {value.items[0].one}</div>
+                        </div>
                     )
                 }
             }

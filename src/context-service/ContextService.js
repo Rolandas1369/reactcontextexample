@@ -6,10 +6,11 @@ const SomeConsumer = SomeContext.Consumer
 
 class ContextService extends Component {
   state = {
-    items: [{ one: "22221", id:1 }, { two: "22222", id:2 }],
+    items: [{ one: 100, id:1 }, { two: 200, id:2 }],
   };
 
-  printOne = () => {
+  printOne = (e) => {
+    console.log('somedi', e.target)
       this.setState({
         items: [
           ...this.state.items.filter((item) => {
