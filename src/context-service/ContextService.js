@@ -1,28 +1,33 @@
-import React, {Component} from 'react';
-const SomeContext =  React.createContext('defULT')
+import React, { Component } from "react";
+const SomeContext = React.createContext("defULT");
 
-const SomeProvider = SomeContext.Provider
+const SomeProvider = SomeContext.Provider;
+const SomeConsumer = SomeContext.Consumer
 
 class ContextService extends Component {
+  state = {
+    items: [{ one: "22221", id:1 }, { two: "22222", id:2 }],
+  };
 
-    state = {
+  printOne = () => {
+      this.setState({
         items: [
-            {one: '22221'},
-            {two: '22222'}
-        ]
-    }
-
-    printOne () {
-        console.log('1')
-    }
+          ...this.state.items.filter((item) => {
+            return item.id !== 1;
+          }),
+        ],
+      });
+    };
 
 
-    render() {
-        return (
-        <SomeProvider value={{...this.state, printOne: this.printOne}}>{this.props.children}</SomeProvider>
-        )
-    }
+  render() {
+    return (
+      <SomeProvider value={{ ...this.state, printOne: this.printOne }}>
+        {this.props.children}
+      </SomeProvider>
+    );
+  }
 }
 
-export { ContextService }
-export { SomeContext }
+export { ContextService };
+export { SomeContext, SomeConsumer };
